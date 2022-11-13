@@ -1,0 +1,31 @@
+using System;
+class Program {
+  static void Main(string[] args) 
+  {
+    int x = Convert.ToInt32(Console.ReadLine());
+    double[] m = new double[7];
+    m[0] = Convert.ToDouble(Console.ReadLine());
+    m[1] = Convert.ToDouble(Console.ReadLine());
+    m[2] = Convert.ToDouble(Console.ReadLine());
+    m[3] = Convert.ToDouble(Console.ReadLine());
+    m[4] = Convert.ToDouble(Console.ReadLine());
+    m[5] = Convert.ToDouble(Console.ReadLine());
+    m[6] = Convert.ToDouble(Console.ReadLine());
+    double[] n = m;
+    sort(m);
+    for (int i =0 ;i< m.Length;i++)
+    {
+        if ((m[i]%2) == 0)
+        {
+            Console.WriteLine(m[i]);
+        }
+    }
+    for (int i =0 ;i< m.Length;i++)
+    {
+        if (((m[i]%2) == 1)&&(m[i]>x)
+        {
+            Console.WriteLine(m[i]);
+        }
+    }
+  }
+}
