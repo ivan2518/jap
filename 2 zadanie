@@ -12,7 +12,7 @@ class Program {
     m[5] = Convert.ToDouble(Console.ReadLine());
     m[6] = Convert.ToDouble(Console.ReadLine());
     double[] n = m;
-    sort(m);
+    ArraySort(m);
     for (int i =0 ;i< m.Length;i++)
     {
         if ((m[i]%2) == 0)
@@ -20,11 +20,11 @@ class Program {
             Console.WriteLine(m[i]);
         }
     }
-    for (int i =0 ;i< m.Length;i++)
+    for (int i =0 ;i< n.Length;i++)
     {
-        if (((m[i]%2) == 1)&&(m[i]>x)
+        if (((n[i]%2) == 1)&&(n[i]>x)
         {
-            Console.WriteLine(m[i]);
+            Console.WriteLine(n[i]);
         }
     }
   }
