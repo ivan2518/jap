@@ -1,0 +1,111 @@
+using System;
+
+namespace ConsoleApp
+{
+      internal class Program
+    {
+        static void Main(string[] args)
+        {
+            Date data1 = new Date(20, 12, 2004);
+            data1.Print();
+
+            int i = data1.Next();
+            Console.WriteLine(i);
+            int i2 = data1.Previos();
+            Console.WriteLine(i2);
+
+            data1.PrintForward(10);
+            data1.PrintBackward(10);
+        }
+        public class Date
+    {
+        public Date(int d, int m, int y)
+        {
+            Proverka_vvoda(ref d, ref m, ref y);
+            day = d;
+            month = m;
+            year = y;
+        }
+        static private void Proverka_vvoda(ref int d, ref int m, ref int y)
+        {
+            if ((d == -1) && (m == -1) && (y == -1))
+            {
+                d = 1;
+                m = 1;
+                y = 1;
+            }
+            else
+            {
+                int dayinmonth = DateTime.DaysInMonth(y, m);
+
+                if (d == 0)
+                {
+                    m--;
+                    if (m == 0)
+                    {
+                        y--;
+                        m = 12;
+                    }
+                    d = DateTime.DaysInMonth(y, m); ;
+                }
+                while (d > dayinmonth)
+                {
+                    m++;
+                    d -= dayinmonth;
+                }
+                while (m > 12)
+                {
+                    m -= 12;
+                    y++;
+                }
+            }
+        }
+        public int Next()
+        {
+            Date container = new Date(day + 1, month, year);
+            return container.day;
+        }
+        public int Previos()
+        {
+            Date container = new Date(day - 1, month, year);
+            return container.day;
+        }
+        public void Print() => Console.WriteLine($"The {day} of {massiv_mesyacev[month - 1]} {year}");
+        public void PrintForward(int n)
+        {
+            int daysinmohth;
+
+            for (int i = 0; i < n; i++)
+            {
+                daysinmohth = DateTime.DaysInMonth(year, month);
+
+                if ((day + i + 1) > daysinmohth)
+                    Console.WriteLine($"{day + i + 1 - daysinmohth}");
+                else
+                    Console.WriteLine($"{day + i + 1}");
+            }
+        }
+        public void PrintBackward(int n)
+        {
+            int daysinmohth;
+
+            for (int i = 0; i < n; i++)
+            {
+                if ((day - i - 1) <= 0)
+                {
+                    daysinmohth = DateTime.DaysInMonth(year, month);
+                    Console.WriteLine($"{day - i - 1 + daysinmohth}");
+                }
+                else
+                    Console.WriteLine($"{day - i - 1}");
+            }
+        }
+
+        private string[] massiv_mesyacev = { "January", "February", "Mart", "April", "May", "June", "July", "August", "September", "October", "November", "December" };
+        private int year;
+        private int month;
+        private int day;
+    }
+  
+    }
+}
