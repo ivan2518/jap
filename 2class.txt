@@ -1,0 +1,34 @@
+using System;
+
+public class MainClass
+{
+    public class MyString
+    {
+        public string s = string.Empty;
+        public string Reverse()
+        {
+            string t = "";
+            for (int i = s.Length - 1; i > -1; i--) 
+                t += s[i];
+            return t;
+        }
+        public string UcFirst()
+        {
+            return s.Substring(0, 1).ToUpper() + s.Substring(1);
+        }
+        public string UcWords()
+        {
+            return s.Substring(0).ToUpper();
+        }
+
+    }
+    public static void Main()
+    {
+        var myS = new MyString();
+        myS.s = Console.ReadLine();
+        Console.WriteLine(myS.Reverse());
+        Console.WriteLine(myS.UcFirst());
+        Console.WriteLine(myS.UcWords());
+        Console.ReadLine();
+    }
+}

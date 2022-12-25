@@ -1,0 +1,61 @@
+using System;
+using System.Collections;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace ConsoleApp1
+{
+    class Program
+    {
+        static void Main()
+        {
+            Console.WriteLine("Введите n : ");
+            int n = Int32.Parse (Console.ReadLine());
+            ArrayList l = GetList(n);
+            ;
+            for (int i = 0; i < l.Count; i++)
+                Console.Write(l[i] + " ");
+            Console.WriteLine();
+        }
+        static int randstr()
+        {
+            Random rnd = new Random();
+            int i = rnd.Next(0, 62);
+            return i;
+        }
+
+        static ArrayList GetList(int n)
+        {
+            Random rand = new Random();
+            ArrayList list = new ArrayList();
+            char[] h = { '0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h',
+                'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z', 'A', 'B',
+                'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V',
+                'W', 'X', 'Y', 'Z' };
+            for (int i = 0; i <= n; i++)
+            {
+                int b = rand.Next(0, 5);
+                if (b == 1)
+                {
+                    string c = "";
+                    for (int k = 0; k < 16; k++)
+                    {
+                        c += h[randstr()];
+                        System.Threading.Thread.Sleep(16);
+                    }
+                    list.Add(c);
+                }
+                else if (b == 2)
+                    list.Add(rand.Next());
+                else if (b == 3)
+                    list.Add(rand.NextDouble());
+                else if (b == 4)
+                    list.Add((rand.NextDouble() + rand.Next()));
+            }
+
+            return list;
+        }
+    }
+}

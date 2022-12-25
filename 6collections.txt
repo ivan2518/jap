@@ -1,0 +1,27 @@
+using System;
+using System.Collections;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace ConsoleApp1
+{
+    class Program
+    {
+        static void Main()
+        {
+            Console.WriteLine("Введите первый элемент");
+            int a = Int32.Parse(Console.ReadLine())+1;
+            Console.WriteLine("Введите последний элемент");
+            int b = Int32.Parse(Console.ReadLine())-1;
+            List<int> l = new List<int>();
+            for (int i = a; i <= b; i++)
+                l.Add(i);
+            foreach (int i in l)
+                Console.Write(i + " ");
+            Console.WriteLine();
+        }
+
+    }
+}

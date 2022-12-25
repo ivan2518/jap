@@ -1,0 +1,28 @@
+using System;
+using System.Collections;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace ConsoleApp1
+{
+    class Program
+    {
+        static void Main()
+        {
+            Console.WriteLine("Введите высоту : ");
+            int a = Int32.Parse(Console.ReadLine());
+            string s = "*";
+            for (int i = 0; i < a; i++)
+            {
+                int X = (Console.WindowWidth / 2 ) - (s.Length  / 2);
+                Console.SetCursorPosition(X, Console.WindowHeight + i);
+                Console.Write(s);
+                s += "**";
+            }
+            Console.WriteLine();
+        }
+    }
+
+}

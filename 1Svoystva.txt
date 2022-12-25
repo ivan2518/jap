@@ -1,0 +1,40 @@
+using System;
+
+namespace ConsoleApp3
+{
+    class Program
+    {
+        public class Tree
+        {
+            private int value;
+            private string type_tree;
+            public Tree()
+            {
+                value = 0;
+                type_tree = string.Empty;
+            }
+            public Tree(string type_tree, int value)
+            {
+                this.value = value;
+                this.type_tree = type_tree;
+            }
+            public Tree(Tree x)
+            {
+                value = x.value;
+                type_tree = x.type_tree;
+            }
+            public void Print() { Console.WriteLine($"{type_tree}, {value}"); }
+            ~Tree() { }
+        }
+
+
+        public static void Main()
+        {
+            var tree1 = new Tree("сосна", -6);
+            var tree2 = new Tree("береза", 80);
+
+            tree1.Print();
+            tree2.Print();
+        }
+    }
+}

@@ -1,0 +1,52 @@
+using System;
+using System.Collections;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace ConsoleApp1
+{
+    class Program
+    {
+    static void Main()
+        {
+            Myxa myxa = new Myxa();
+            Myxa spider = new Myxa();
+            myxa.Insert();
+            spider.Insert();
+            myxa.NePoPryamoy(spider);
+            myxa.PoPryamoy(spider);
+            Console.WriteLine();
+        }
+
+
+    }
+    class Myxa
+    {
+        double x = 0;
+        double y = 0;
+        double z = 0; 
+        
+        public void Insert()
+        {
+            Console.WriteLine("Введите x : ");
+            x = Double.Parse(Console.ReadLine());
+            Console.WriteLine("Введите y : ");
+            y = Double.Parse(Console.ReadLine());
+            Console.WriteLine("Введите z : ");
+            z = Double.Parse(Console.ReadLine());
+        }
+        public double PoPryamoy(Myxa a)
+        {
+            Console.WriteLine("Расстояние по прямой : {0}", Math.Round(Math.Sqrt(Math.Pow(Math.Abs(a.x - x), 2) + Math.Pow(Math.Abs(a.y - y), 2) + Math.Pow(Math.Abs(a.z - z), 2)), 5));
+            return Math.Round(Math.Sqrt(Math.Pow(Math.Abs(a.x - x), 2) + Math.Pow(Math.Abs(a.y - y), 2) + Math.Pow(Math.Abs(a.z - z), 2)), 5);
+        }
+        public double NePoPryamoy(Myxa a)
+        {
+            Console.WriteLine("Расстояние по не прямой : {0}", Math.Round(Math.Sqrt(Math.Pow(Math.Abs(a.x - x), 2) + Math.Pow(Math.Abs(a.y - y), 2)) + Math.Abs(a.z - z)), 5);
+            return Math.Round(Math.Sqrt(Math.Pow(Math.Abs(a.x - x), 2) + Math.Pow(Math.Abs(a.y - y), 2)) + Math.Abs(a.z - z), 5);
+        }
+
+    }
+}
