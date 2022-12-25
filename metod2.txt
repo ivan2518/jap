@@ -1,0 +1,45 @@
+using System;
+using System.Linq;
+
+namespace ConsoleApp1
+{
+    class Program
+    {
+        public static void Main(string[] args)
+        {
+            int x = Int32.Parse(Console.ReadLine());
+            f(x);
+        }
+        public static void f(int value)
+        {
+            int i = 1;
+            int j = 1;
+            int[] arr = new int[value / 10];
+            int index = 0;
+            int p = i * j;
+            while (i != value)
+            {
+                if (arr.Contains(i) == false)
+                {
+                    p = i * j;
+                    if (p == value)
+                    {
+                        Console.WriteLine($"{i} * {j} = {p}");
+                        i++;
+                        arr[index] = j;
+                        index++;
+                        j = 1;
+                    }
+                    if (j == value)
+                    {
+                        j = 1;
+                        i++;
+                    }
+                    j++;
+                }
+                else
+                    return;
+            }
+        }
+    }
+}
