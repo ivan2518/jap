@@ -1,0 +1,126 @@
+using System;
+using System.Reflection.Emit;
+
+namespace asdf
+{
+    public class Money
+    {
+        public Money(string input_value, string input_type)
+        {
+            this.Input_cheking(input_value, input_type);
+        }
+        public Money(string input_value1, string input_type1, string input_value2, string input_type2)
+        {
+            this.Input_cheking(input_value1, input_type1, input_value2, input_type2);
+        }
+
+        private void Input_cheking(string input_value, string input_type)
+        {
+            int int_input_value = Convert.ToInt32(input_value);
+
+            if (int_input_value < 0)
+            {
+                Console.WriteLine("Error! Check input value");
+                return;
+            }
+
+            if (input_type == "р.")
+                rub = int_input_value;
+
+            else if (input_type == "коп.")
+            {
+                rub = int_input_value / 100;
+                kop = int_input_value % 100;
+            }
+            else
+                Console.WriteLine("Error! Check input type");
+
+        }
+        private void Input_cheking(string input_value1, string input_type1, string input_value2, string input_type2)
+        {
+            int int_input_value1 = Convert.ToInt32(input_value1);
+            int int_input_value2 = Convert.ToInt32(input_value2);
+
+            if ((int_input_value1 < 0) || (int_input_value2 < 0))
+            {
+                Console.WriteLine("Error! Check input values");
+                return;
+            }
+
+            if (input_type1 != "р.")
+            {
+                Console.WriteLine("Error! Check input types");
+                return;
+            }
+            else
+            {
+                if (int_input_value2 >= 100)
+                {
+                    rub = int_input_value1 + int_input_value2 / 100;
+                    kop = int_input_value2 % 100;
+                }
+                else
+                {
+                    rub = int_input_value1;
+                    kop = int_input_value2;
+                }
+            }
+        }
+        public static Money Sum(Money input_object1, Money input_object2)
+        {
+            string sum_rub = (input_object1.rub + input_object2.rub).ToString();
+            string sum_kop = (input_object1.kop + input_object2.kop).ToString();
+
+            Money temp_object = new Money(sum_rub, "р.", sum_kop, "коп.");
+            return temp_object;
+        }
+
+        public static Money Difference(Money input_object1, Money input_object2)
+        {
+            string dif_rub = (Math.Abs(input_object1.rub - input_object2.rub)).ToString();
+            string dif_kop = (Math.Abs(input_object1.kop - input_object2.kop)).ToString();
+
+            Money temp_object = new Money(dif_rub, "р.", dif_kop, "коп.");
+            return temp_object;
+        }
+
+        public void Print()
+        {
+            if (rub == 0)
+                Console.WriteLine($"Kop: {kop}");
+            else
+                Console.WriteLine($"Rub: {rub} Kop: {kop}");
+        }
+
+        public void PrintTransferCost(double input_transfer_fee)
+        {
+            double transfer_fee = Math.Round((rub * 100 + kop) * (input_transfer_fee / 100));
+            string new_kop = (transfer_fee + kop).ToString();
+
+            Money temp_object = new Money(Convert.ToString(rub), "р.", new_kop, "коп.");
+            temp_object.Print();
+        }
+        private int rub;
+        private int kop;
+    }
+
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            Money object1 = new Money("10", "р.", "15", "коп.");
+            Money object2 = new Money("100", "р.", "50", "коп.");
+            Money object3 = Money.Sum(object1, object2);
+            
+            object1.Print();
+            object2.Print();
+            object3.Print();
+            
+            object3 = Money.Difference(object1, object2);
+            object3.Print();
+            
+            object1.PrintTransferCost(5);
+            
+        }
+    }
+}

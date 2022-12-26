@@ -1,0 +1,31 @@
+using System;
+
+namespace Конструкторы_второе
+{
+    public class Barrel
+    {
+        public void ToChange(int vvod)
+        {
+            volume = vvod;
+        }
+        public void ToChange(string vvod)
+        {
+            material = vvod;
+        }
+        
+        public string material;
+        public int volume;
+    }
+    class Program
+    {
+        public static void Main()
+        {
+            var barrel = new Barrel();
+            barrel.material = "oak";
+            barrel.volume = 200;
+            barrel.ToChange(100);
+            barrel.ToChange("beech");
+            Console.WriteLine($"{barrel.material}, {barrel.volume}");
+        }
+    }
+}
